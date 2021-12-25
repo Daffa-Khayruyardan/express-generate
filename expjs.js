@@ -1,5 +1,4 @@
 // import some packages 
-const inquirer = require('inquirer');
 const path = require('path');
 const fs = require('fs').promises;
 
@@ -13,18 +12,6 @@ const font_magenta = "\x1b[35m"
 const font_cyan = "\x1b[36m"
 const font_white = "\x1b[37m"
 
-// make project directory
-async function makeDir(name) {
-    let newDir;
-
-    newDir = await fs.mkdir(process.cwd() + '/' + name);
-}
-
-makeDir(process.argv[2]);
-
-// change directory location
-process.chdir(process.cwd + '/' + process.argv[2]);
-
 // clear screen
 console.log('\033c');
 
@@ -35,4 +22,19 @@ console.log(`${font_cyan} | |_____  ${font_green} \\   \\  /   /  ${font_magenta
 console.log(`${font_cyan} |  _____|  ${font_green} \\   \\/   /   ${font_magenta}|  ____)  ${font_yellow}          |  |  _(___   )   `);
 console.log(`${font_cyan} | |_____   ${font_green} /   /\\   \\   ${font_magenta}|  |      ${font_yellow}   |\\_____|  | |       |   `);
 console.log(`${font_cyan} |_______|  ${font_green}/___/  \\___\\  ${font_magenta}|__|      ${font_yellow}   |_________| |_______|    `);
+console.log('\n');
 
+console.log(`Create and init -> ${font_cyan + process.argv[2]}`);
+
+// make project directory
+async function makeDir(name) {
+    let newDir;
+
+    newDir = await fs.mkdir(process.cwd() + '/' + name);
+}
+
+// create new directory
+makeDir(process.argv[2]);
+
+// change directory location
+process.chdir(process.cwd + '/' + process.argv[2]);
