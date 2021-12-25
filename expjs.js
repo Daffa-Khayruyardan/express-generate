@@ -22,6 +22,9 @@ async function makeDir(name) {
 
 makeDir(process.argv[2]);
 
+// change directory location
+process.chdir(process.cwd + '/' + process.argv[2]);
+
 // clear screen
 console.log('\033c');
 
