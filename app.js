@@ -1,7 +1,7 @@
 // import some packages 
 const inquirer = require('inquirer');
 const path = require('path');
-const fs = require('fs');
+const fs = require('fs').promises;
 
 // init some color text here
 const font_black = "\x1b[30m"
@@ -12,6 +12,15 @@ const font_blue = "\x1b[34m"
 const font_magenta = "\x1b[35m"
 const font_cyan = "\x1b[36m"
 const font_white = "\x1b[37m"
+
+// make project directory
+async function makeDir(name) {
+    let newDir;
+
+    newDir = await fs.mkdir(process.cwd() + '/' + name);
+}
+
+makeDir(process.argv[2]);
 
 // clear screen
 console.log('\033c');
