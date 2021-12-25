@@ -12,6 +12,13 @@ const font_magenta = "\x1b[35m"
 const font_cyan = "\x1b[36m"
 const font_white = "\x1b[37m"
 
+// make project directory function
+async function makeDir(name) {
+    let newDir;
+
+    newDir = await fs.mkdir(process.cwd() + '/' + name);
+}
+
 // clear screen
 console.log('\033c');
 
@@ -25,13 +32,6 @@ console.log(`${font_cyan} |_______|  ${font_green}/___/  \\___\\  ${font_magenta
 console.log('\n');
 
 console.log(`Create and init -> ${font_cyan + process.argv[2]}`);
-
-// make project directory
-async function makeDir(name) {
-    let newDir;
-
-    newDir = await fs.mkdir(process.cwd() + '/' + name);
-}
 
 // create new directory
 makeDir(process.argv[2]);
