@@ -1,0 +1,33 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+h1 {
+    text-align: center;
+    position: absolute;
+    font-size: 2.4em;
+    top: 43%;
+    left: 43%;
+}
+
+/*make some responsive layout here*/
+@media only screen and (max-width: 700px) {
+    h1 {
+        text-align: center;
+        position: absolute;
+        font-size: 2.4em;
+        top: 43%;
+        left: 36%;
+    }
+}
+
+@media only screen and (max-width: 540px) {
+    h1 {
+        text-align: center;
+        position: absolute;
+        font-size: 2.2em;
+        top: 44%;
+        left: 33%;
+    }
+}
