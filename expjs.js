@@ -31,7 +31,7 @@ console.log(`${font_cyan} | |_____   ${font_green} /   /\\   \\   ${font_magenta
 console.log(`${font_cyan} |_______|  ${font_green}/___/  \\___\\  ${font_magenta}|__|      ${font_yellow}   |_________| |_______|    `);
 console.log('\n');
 
-console.log(`Create and init -> ${font_cyan + process.argv[2]}`);
+console.log(`Create and init project -> ${font_cyan + process.argv[2]}`);
 
 // create new directory
 makeDir(process.argv[2]);
