@@ -31,10 +31,14 @@ async function giveCMD(my_cmd) {
 // make readfile function
 async function replaceCode() {
     let read_file;
+    let write_file;
 
     read_file = await fs.readFile(process.cwd() + '/package.json', 'utf-8');
 
-    let read_file_replace1 = read_file.replace(/test/g, 'serve');
+    let read_file_replace1 = read_file.replace(/test/, 'serve');
+    let read_file_replace2 = read_file_replace1.replace(/echo \\"Error: no test specified\\" && exit 1/, 'nodemon ./app.js');
+
+    write_file = await fs.writeFile(process.cwd() + '/package.json', read_file_replace2);
 }
 
 // make copyfile function
@@ -94,7 +98,7 @@ if(process.argv[3] == 'ejs') {
     giveCMD('npm init -y');
 
     // some command for npm
-    setTimeout(replaceCode, 5000);
+    setTimeout(replaceCode, 3000);
 
 }else if(process.argv[3] == 'pug') {
     
