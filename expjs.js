@@ -85,4 +85,6 @@ if(process.argv[3] == 'ejs') {
     giveCMD('npm init -y');
 
 
+}else if(process.argv[3] == 'pug') {
+    
 }
