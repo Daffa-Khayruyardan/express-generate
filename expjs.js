@@ -1,8 +1,8 @@
 // import some packages 
 const path = require('path');
 const fs = require('fs').promises;
+const { exec } = require('child_process');
 const process = require('process');
-const exec = require('child_process').exec;
 
 // init some color text here
 const font_black = "\x1b[30m"
@@ -100,6 +100,70 @@ if(process.argv[3] == 'ejs') {
     // some command for npm
     setTimeout(replaceCode, 3000);
 
+    // activity log
+    console.log(`${font_yellow}Install some dependencies -> ${font_cyan + process.argv[2]}`);
+
+    // install some dependencies
+    function installDep() {
+        exec('npm i express ejs --save', (err) => {
+            if(err) {
+                console.log(`${font_red}There's something wrong here`);
+            }else {
+                console.log(`${font_yellow}Install dependencies complete -> ${font_cyan + process.argv[2]}`);
+            }
+        });
+    }
+
+    setTimeout(installDep, 3000);
+
 }else if(process.argv[3] == 'pug') {
-    
+    // change directory location
+    process.chdir(process.cwd() + '/' + process.argv[2].toString())
+
+    // activity log
+    console.log(`${font_yellow}Make directory inside project -> ${font_cyan + process.argv[2]}`);
+
+    // make some dir in project folder
+    makeDir('views');
+    makeDir('public');
+    makeDir('public/images');
+    makeDir('public/scripts');
+    makeDir('public/style');
+    makeDir('routes');
+
+    // activity log
+    console.log(`${font_yellow}Copy file inside project -> ${font_cyan + process.argv[2]}`);
+
+    // copy some template files 
+    copyFile(__dirname + '/templates/app-pug/app.js', process.cwd() + '/app.js');
+    copyFile(__dirname + '/templates/views-pug/index.pug', process.cwd() + '/views/index.pug');
+    copyFile(__dirname + '/templates/routes/UserRoute.js', process.cwd() + '/routes/UserRoute.js');
+    copyFile(__dirname + '/templates/public/images/Icon.svg', process.cwd() + '/public/images/Icon.svg');
+    copyFile(__dirname + '/templates/public/scripts/index.js', process.cwd() + '/public/scripts/index.js');
+    copyFile(__dirname + '/templates/public/style/style.css', process.cwd() + '/public/style/style.css');
+
+    // activity log
+    console.log(`${font_yellow}Init json file inside project -> ${font_cyan + process.argv[2]}`);
+
+    // init package.json
+    giveCMD('npm init -y');
+
+    // some command for npm
+    setTimeout(replaceCode, 3000);
+
+    // activity log
+    console.log(`${font_yellow}Install some dependencies -> ${font_cyan + process.argv[2]}`);
+
+    // install some dependencies
+    function installDep() {
+        exec('npm i express pug --save', (err) => {
+            if(err) {
+                console.log(`${font_red}There's something wrong here`);
+            }else {
+                console.log(`${font_yellow}Install dependencies complete -> ${font_cyan + process.argv[2]}`);
+            }
+        });
+    }
+
+    setTimeout(installDep, 3000);
 }
