@@ -1,6 +1,8 @@
 // import some packages 
 const path = require('path');
 const fs = require('fs').promises;
+const process = require('process');
+const exec = require('child_process').exec;
 
 // init some color text here
 const font_black = "\x1b[30m"
@@ -13,10 +15,24 @@ const font_cyan = "\x1b[36m"
 const font_white = "\x1b[37m"
 
 // make project directory function
-async function makeDir(name) {
+async function makeDir(name_folder) {
     let newDir;
 
-    newDir = await fs.mkdir(process.cwd() + '/' + name);
+    newDir = await fs.mkdir(process.cwd() + '/' + name_folder);
+}
+
+// make changedir function
+async function giveCMD(my_cmd) {
+    let dirGoal;
+
+    dirGoal = await exec(my_cmd);
+}
+
+// make copyfile function
+async function copyFile(src_path, dest_path) {
+    let file_copy;
+
+    file_copy = await fs.copyFile(src_path, dest_path);
 }
 
 // clear screen
@@ -36,5 +52,11 @@ console.log(`Create and init project -> ${font_cyan + process.argv[2]}`);
 // create new directory
 makeDir(process.argv[2]);
 
-// change directory location
-process.chdir(process.cwd + '/' + process.argv[2]);
+if(process.argv[3] == 'ejs') {
+    copyFile(__dirname + '/templates/app-ejs/app.js', process.cwd() + '/' + process.argv[2].toString() + '/app.js');
+
+    // change directory location
+    process.chdir(process.argv[2].toString())
+
+    giveCMD('npm init -y');
+}
