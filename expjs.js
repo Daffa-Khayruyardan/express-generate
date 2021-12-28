@@ -53,10 +53,36 @@ console.log(`Create and init project -> ${font_cyan + process.argv[2]}`);
 makeDir(process.argv[2]);
 
 if(process.argv[3] == 'ejs') {
-    copyFile(__dirname + '/templates/app-ejs/app.js', process.cwd() + '/' + process.argv[2].toString() + '/app.js');
-
     // change directory location
-    process.chdir(process.argv[2].toString())
+    process.chdir(process.cwd() + '/' + process.argv[2].toString())
 
+    // activity log
+    console.log(`${font_yellow}Make directory inside project -> ${font_cyan + process.argv[2]}`);
+
+    // make some dir in project folder
+    makeDir('views');
+    makeDir('public');
+    makeDir('public/images');
+    makeDir('public/scripts');
+    makeDir('public/style');
+    makeDir('routes');
+
+    // activity log
+    console.log(`${font_yellow}Copy file inside project -> ${font_cyan + process.argv[2]}`);
+
+    // copy some template files 
+    copyFile(__dirname + '/templates/app-ejs/app.js', process.cwd() + '/app.js');
+    copyFile(__dirname + '/templates/views-ejs/index.ejs', process.cwd() + '/views/index.ejs');
+    copyFile(__dirname + '/templates/routes/UserRoute.js', process.cwd() + '/routes/UserRoute.js');
+    copyFile(__dirname + '/templates/public/images/Icon.svg', process.cwd() + '/public/images/Icon.svg');
+    copyFile(__dirname + '/templates/public/scripts/index.js', process.cwd() + '/public/scripts/index.js');
+    copyFile(__dirname + '/templates/public/style/style.css', process.cwd() + '/public/style/style.css');
+
+    // activity log
+    console.log(`${font_yellow}Init json file inside project -> ${font_cyan + process.argv[2]}`);
+
+    // init package.json
     giveCMD('npm init -y');
+
+
 }
