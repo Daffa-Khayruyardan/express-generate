@@ -29,10 +29,12 @@ async function giveCMD(my_cmd) {
 }
 
 // make readfile function
-async function readFile(file_path) {
+async function replaceCode() {
     let read_file;
 
-    read_file = await fs.readFile(file_path, 'utf-8');
+    read_file = await fs.readFile(process.cwd() + '/package.json', 'utf-8');
+
+    let read_file_replace1 = read_file.replace(/test/g, 'serve');
 }
 
 // make copyfile function
@@ -92,7 +94,7 @@ if(process.argv[3] == 'ejs') {
     giveCMD('npm init -y');
 
     // some command for npm
-
+    setTimeout(replaceCode, 5000);
 
 }else if(process.argv[3] == 'pug') {
     
