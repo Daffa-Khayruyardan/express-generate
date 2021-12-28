@@ -28,6 +28,13 @@ async function giveCMD(my_cmd) {
     dirGoal = await exec(my_cmd);
 }
 
+// make readfile function
+async function readFile(file_path) {
+    let read_file;
+
+    read_file = await fs.readFile(file_path, 'utf-8');
+}
+
 // make copyfile function
 async function copyFile(src_path, dest_path) {
     let file_copy;
@@ -83,6 +90,8 @@ if(process.argv[3] == 'ejs') {
 
     // init package.json
     giveCMD('npm init -y');
+
+    // some command for npm
 
 
 }else if(process.argv[3] == 'pug') {
