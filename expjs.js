@@ -60,12 +60,12 @@ console.log(`${font_cyan} | |_____   ${font_green} /   /\\   \\   ${font_magenta
 console.log(`${font_cyan} |_______|  ${font_green}/___/  \\___\\  ${font_magenta}|__|      ${font_yellow}   |_________| |_______|    `);
 console.log('\n');
 
-console.log(`Create and init project -> ${font_cyan + process.argv[2]}`);
-
-// create new directory
-makeDir(process.argv[2]);
-
 if(process.argv[3] == 'ejs') {
+    console.log(`Create and init project -> ${font_cyan + process.argv[2]}`);
+
+    // create new directory
+    makeDir(process.argv[2]);
+
     // change directory location
     process.chdir(process.cwd() + '/' + process.argv[2].toString())
 
@@ -98,7 +98,7 @@ if(process.argv[3] == 'ejs') {
     giveCMD('npm init -y');
 
     // some command for npm
-    setTimeout(replaceCode, 3000);
+    setTimeout(replaceCode, 3500);
 
     // activity log
     console.log(`${font_yellow}Install some dependencies -> ${font_cyan + process.argv[2]}`);
@@ -114,9 +114,14 @@ if(process.argv[3] == 'ejs') {
         });
     }
 
-    setTimeout(installDep, 3000);
+    setTimeout(installDep, 3500);
 
 }else if(process.argv[3] == 'pug') {
+    console.log(`Create and init project -> ${font_cyan + process.argv[2]}`);
+
+    // create new directory
+    makeDir(process.argv[2]);
+
     // change directory location
     process.chdir(process.cwd() + '/' + process.argv[2].toString())
 
@@ -149,7 +154,7 @@ if(process.argv[3] == 'ejs') {
     giveCMD('npm init -y');
 
     // some command for npm
-    setTimeout(replaceCode, 3000);
+    setTimeout(replaceCode, 3500);
 
     // activity log
     console.log(`${font_yellow}Install some dependencies -> ${font_cyan + process.argv[2]}`);
@@ -165,5 +170,122 @@ if(process.argv[3] == 'ejs') {
         });
     }
 
-    setTimeout(installDep, 3000);
+    setTimeout(installDep, 3500);
+    
+}else if(process.argv[3] == 'html') {
+    console.log(`Create and init project -> ${font_cyan + process.argv[2]}`);
+
+    // create new directory
+    makeDir(process.argv[2]);
+
+    // change directory location
+    process.chdir(process.cwd() + '/' + process.argv[2].toString())
+
+    // activity log
+    console.log(`${font_yellow}Make directory inside project -> ${font_cyan + process.argv[2]}`);
+
+    // make some dir in project folder
+    makeDir('views');
+    makeDir('public');
+    makeDir('public/images');
+    makeDir('public/scripts');
+    makeDir('public/style');
+    makeDir('routes');
+
+    // activity log
+    console.log(`${font_yellow}Copy file inside project -> ${font_cyan + process.argv[2]}`);
+
+    // copy some template files 
+    copyFile(__dirname + '/templates/app-html/app.js', process.cwd() + '/app.js');
+    copyFile(__dirname + '/templates/views-html/index.html', process.cwd() + '/views/index.html');
+    copyFile(__dirname + '/templates/routes-html/UserRoute.js', process.cwd() + '/routes/UserRoute.js');
+    copyFile(__dirname + '/templates/public/images/Icon.svg', process.cwd() + '/public/images/Icon.svg');
+    copyFile(__dirname + '/templates/public/scripts/index.js', process.cwd() + '/public/scripts/index.js');
+    copyFile(__dirname + '/templates/public/style/style.css', process.cwd() + '/public/style/style.css');
+
+    // activity log
+    console.log(`${font_yellow}Init json file inside project -> ${font_cyan + process.argv[2]}`);
+
+    // init package.json
+    giveCMD('npm init -y');
+
+    // some command for npm
+    setTimeout(replaceCode, 3500);
+
+    // activity log
+    console.log(`${font_yellow}Install some dependencies -> ${font_cyan + process.argv[2]}`);
+
+    // install some dependencies
+    function installDep() {
+        exec('npm i express --save', (err) => {
+            if(err) {
+                console.log(`${font_red}There's something wrong here`);
+            }else {
+                console.log(`${font_yellow}Install dependencies complete -> ${font_cyan + process.argv[2]}`);
+            }
+        });
+    }
+
+    setTimeout(installDep, 3500);
+    
+}else if(process.argv[3] == 'ejs-layouts') {
+    console.log(`Create and init project -> ${font_cyan + process.argv[2]}`);
+
+    // create new directory
+    makeDir(process.argv[2]);
+
+    // change directory location
+    process.chdir(process.cwd() + '/' + process.argv[2].toString())
+
+    // activity log
+    console.log(`${font_yellow}Make directory inside project -> ${font_cyan + process.argv[2]}`);
+
+    // make some dir in project folder
+    makeDir('views');
+    makeDir('views/layouts');
+    makeDir('public');
+    makeDir('public/images');
+    makeDir('public/scripts');
+    makeDir('public/style');
+    makeDir('routes');
+
+    // activity log
+    console.log(`${font_yellow}Copy file inside project -> ${font_cyan + process.argv[2]}`);
+
+    // copy some template files 
+    copyFile(__dirname + '/templates/app-ejs-layouts/app.js', process.cwd() + '/app.js');
+    copyFile(__dirname + '/templates/views-ejs-layouts/layouts/index.ejs', process.cwd() + '/views/layouts/index.ejs');
+    copyFile(__dirname + '/templates/views-ejs-layouts/home.ejs', process.cwd() + '/views/home.ejs');
+    copyFile(__dirname + '/templates/routes-ejs-layouts/UserRoute.js', process.cwd() + '/routes/UserRoute.js');
+    copyFile(__dirname + '/templates/public/images/Icon.svg', process.cwd() + '/public/images/Icon.svg');
+    copyFile(__dirname + '/templates/public/scripts/index.js', process.cwd() + '/public/scripts/index.js');
+    copyFile(__dirname + '/templates/public/style/style.css', process.cwd() + '/public/style/style.css');
+
+    // activity log
+    console.log(`${font_yellow}Init json file inside project -> ${font_cyan + process.argv[2]}`);
+
+    // init package.json
+    giveCMD('npm init -y');
+
+    // some command for npm
+    setTimeout(replaceCode, 3500);
+
+    // activity log
+    console.log(`${font_yellow}Install some dependencies -> ${font_cyan + process.argv[2]}`);
+
+    // install some dependencies
+    function installDep() {
+        exec('npm i express ejs express-ejs-layouts --save', (err) => {
+            if(err) {
+                console.log(`${font_red}There's something wrong here`);
+            }else {
+                console.log(`${font_yellow}Install dependencies complete -> ${font_cyan + process.argv[2]}`);
+            }
+        });
+    }
+
+    setTimeout(installDep, 3500);
+    console.log(`${font_white}`);
+}else if(process.argv[3] == undefined && process.argv[2] == undefined) {
+    console.log(`\n${font_cyan}Please check your command and try again!`);
 }
